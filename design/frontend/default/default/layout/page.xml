@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout>
+    <default>
+        <block type="Mage_Core_Block_Text_List" name="test" output="toHtml">
+            <block type="Mage_Core_Block_Text" name="text">
+                <action method="setText"><text>Test</text></action>
+            </block>
+        </block>
+    </default>
+</layout>
