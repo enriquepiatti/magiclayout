@@ -32,13 +32,13 @@
  * @package    Varien_Simplexml
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-class Varien_Simplexml_Config
+class Mage_Layout_Varien_Simplexml_Config
 {
 
     /**
      * Configuration xml
      *
-     * @var Varien_Simplexml_Element
+     * @var Mage_Layout_Varien_Simplexml_Element
      */
     protected $_xml = null;
 
@@ -89,7 +89,7 @@ class Varien_Simplexml_Config
      *
      * @var string
      */
-    protected $_elementClass = 'Varien_Simplexml_Element';
+    protected $_elementClass = 'Mage_Layout_Varien_Simplexml_Element';
 
     /**
      * Xpath describing nodes in configuration that need to be extended
@@ -104,14 +104,14 @@ class Varien_Simplexml_Config
      * Initializes XML for this configuration
      *
      * @see self::setXml
-     * @param string|Varien_Simplexml_Element $sourceData
+     * @param string|Mage_Layout_Varien_Simplexml_Element $sourceData
      * @param string $sourceType
      */
     public function __construct($sourceData=null) {
         if (is_null($sourceData)) {
             return;
         }
-        if ($sourceData instanceof Varien_Simplexml_Element) {
+        if ($sourceData instanceof Mage_Layout_Varien_Simplexml_Element) {
            $this->setXml($sourceData);
         } elseif (is_string($sourceData) && !empty($sourceData)) {
             if (strlen($sourceData)<1000 && is_readable($sourceData)) {
@@ -127,10 +127,10 @@ class Varien_Simplexml_Config
     /**
      * Sets xml for this configuration
      *
-     * @param Varien_Simplexml_Element $sourceData
-     * @return Varien_Simplexml_Config
+     * @param Mage_Layout_Varien_Simplexml_Element $sourceData
+     * @return Mage_Layout_Varien_Simplexml_Config
      */
-    public function setXml(Varien_Simplexml_Element $node)
+    public function setXml(Mage_Layout_Varien_Simplexml_Element $node)
     {
         $this->_xml = $node;
         return $this;
@@ -139,13 +139,13 @@ class Varien_Simplexml_Config
     /**
      * Returns node found by the $path
      *
-     * @see     Varien_Simplexml_Element::descend
+     * @see     Mage_Layout_Varien_Simplexml_Element::descend
      * @param   string $path
-     * @return  Varien_Simplexml_Element
+     * @return  Mage_Layout_Varien_Simplexml_Element
      */
     public function getNode($path=null)
     {
-        if (!$this->_xml instanceof Varien_Simplexml_Element) {
+        if (!$this->_xml instanceof Mage_Layout_Varien_Simplexml_Element) {
             return false;
         } elseif ($path === null) {
             return $this->_xml;
@@ -177,7 +177,7 @@ class Varien_Simplexml_Config
      * Enter description here...
      *
      * @param Varien_Simplexml_Config_Cache_Abstract $cache
-     * @return Varien_Simplexml_Config
+     * @return Mage_Layout_Varien_Simplexml_Config
      */
     public function setCache($cache)
     {
@@ -199,7 +199,7 @@ class Varien_Simplexml_Config
      * Enter description here...
      *
      * @param boolean $flag
-     * @return Varien_Simplexml_Config
+     * @return Mage_Layout_Varien_Simplexml_Config
      */
     public function setCacheSaved($flag)
     {
@@ -221,7 +221,7 @@ class Varien_Simplexml_Config
      * Enter description here...
      *
      * @param string $id
-     * @return Varien_Simplexml_Config
+     * @return Mage_Layout_Varien_Simplexml_Config
      */
     public function setCacheId($id)
     {
@@ -243,7 +243,7 @@ class Varien_Simplexml_Config
      * Enter description here...
      *
      * @param array $tags
-     * @return Varien_Simplexml_Config
+     * @return Mage_Layout_Varien_Simplexml_Config
      */
     public function setCacheTags($tags)
     {
@@ -265,7 +265,7 @@ class Varien_Simplexml_Config
      * Enter description here...
      *
      * @param int $lifetime
-     * @return Varien_Simplexml_Config
+     * @return Mage_Layout_Varien_Simplexml_Config
      */
     public function setCacheLifetime($lifetime)
     {
@@ -287,7 +287,7 @@ class Varien_Simplexml_Config
      * Enter description here...
      *
      * @param string $data
-     * @return Varien_Simplexml_Config
+     * @return Mage_Layout_Varien_Simplexml_Config
      */
     public function setCacheChecksum($data)
     {
@@ -305,7 +305,7 @@ class Varien_Simplexml_Config
      * Enter description here...
      *
      * @param string $data
-     * @return Varien_Simplexml_Config
+     * @return Mage_Layout_Varien_Simplexml_Config
      */
     public function updateCacheChecksum($data)
     {
@@ -394,7 +394,7 @@ class Varien_Simplexml_Config
      * Enter description here...
      *
      * @param array $tags
-     * @return Varien_Simplexml_Config
+     * @return Mage_Layout_Varien_Simplexml_Config
      */
     public function saveCache($tags=null)
     {
@@ -434,7 +434,7 @@ class Varien_Simplexml_Config
     /**
      * Enter description here...
      *
-     * @return Varien_Simplexml_Config
+     * @return Mage_Layout_Varien_Simplexml_Config
      */
     public function removeCache()
     {
@@ -509,7 +509,7 @@ class Varien_Simplexml_Config
         if (is_string($string)) {
             $xml = simplexml_load_string($string, $this->_elementClass);
 
-            if ($xml instanceof Varien_Simplexml_Element) {
+            if ($xml instanceof Mage_Layout_Varien_Simplexml_Element) {
                 $this->_xml = $xml;
                 return true;
             }
@@ -523,7 +523,7 @@ class Varien_Simplexml_Config
      * Imports DOM node
      *
      * @param DOMNode $dom
-     * @return Varien_Simplexml_Element
+     * @return Mage_Layout_Varien_Simplexml_Element
      */
     public function loadDom($dom)
     {
@@ -543,7 +543,7 @@ class Varien_Simplexml_Config
      * @param string $path separated by slashes
      * @param string $value
      * @param boolean $overwrite
-     * @return Varien_Simplexml_Config
+     * @return Mage_Layout_Varien_Simplexml_Config
      */
     public function setNode($path, $value, $overwrite=true)
     {
@@ -554,7 +554,7 @@ class Varien_Simplexml_Config
     /**
      * Process configuration xml
      *
-     * @return Varien_Simplexml_Config
+     * @return Mage_Layout_Varien_Simplexml_Config
      */
     public function applyExtends()
     {
@@ -588,14 +588,14 @@ class Varien_Simplexml_Config
         return $text;
     }
 
-    /**
-     * Enter description here...
-     *
-     * @param Varien_Simplexml_Config $config
-     * @param boolean $overwrite
-     * @return Varien_Simplexml_Config
-     */
-    public function extend(Varien_Simplexml_Config $config, $overwrite=true)
+	/**
+	 * Enter description here...
+	 *
+	 * @param Mage_Layout_Varien_Simplexml_Config $config
+	 * @param boolean $overwrite
+	 * @return Mage_Layout_Varien_Simplexml_Config
+	 */
+    public function extend(Mage_Layout_Varien_Simplexml_Config $config, $overwrite=true)
     {
         $this->getNode()->extend($config->getNode(), $overwrite);
         return $this;

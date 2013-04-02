@@ -30,7 +30,7 @@
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-class Mage_Core_Block_Text extends Mage_Core_Block_Abstract
+class Mage_Layout_Block_Text extends Mage_Layout_Block_Abstract
 {
 
     public function setText($text)

@@ -4,7 +4,7 @@
  * @author Enrique Piatti (contacto@enriquepiatti.com)
  */
 require_once 'autoload.php';
-$layout = new Mage_Core_Model_Layout();
+$layout = new Mage_Layout_Model_Layout();
 $layout->getUpdate()->addHandle('default');
 $layout->getUpdate()->load();
 $layout->generateXml();

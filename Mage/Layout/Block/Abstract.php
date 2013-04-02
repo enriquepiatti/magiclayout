@@ -35,7 +35,7 @@
  * @package    Mage_Core
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-abstract class Mage_Core_Block_Abstract extends Varien_Object
+abstract class Mage_Layout_Block_Abstract extends Mage_Layout_Varien_Object
 {
     /**
      * Cache group Tag
@@ -51,14 +51,14 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
     /**
      * Parent layout of the block
      *
-     * @var Mage_Core_Model_Layout
+     * @var Mage_Layout_Model_Layout
      */
     protected $_layout;
 
     /**
      * Parent block
      *
-     * @var Mage_Core_Block_Abstract
+     * @var Mage_Layout_Block_Abstract
      */
     protected $_parent;
 
@@ -114,7 +114,7 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
     /**
      * Messages block instance
      *
-     * @var Mage_Core_Block_Messages
+     * @var Mage_Layout_Block_Messages
      */
     protected $_messagesBlock               = null;
 
@@ -128,7 +128,7 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
     /**
      * Parent block
      *
-     * @var Mage_Core_Block_Abstract
+     * @var Mage_Layout_Block_Abstract
      */
     protected $_parentBlock;
 
@@ -152,7 +152,7 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
     protected static $_urlModel;
 
     /**
-     * @var Varien_Object
+     * @var Mage_Layout_Varien_Object
      */
     private static $_transportObject;
 
@@ -197,7 +197,7 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
     /**
      * Retrieve parent block
      *
-     * @return Mage_Core_Block_Abstract
+     * @return Mage_Layout_Block_Abstract
      */
     public function getParentBlock()
     {
@@ -207,10 +207,10 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
     /**
      * Set parent block
      *
-     * @param   Mage_Core_Block_Abstract $block
-     * @return  Mage_Core_Block_Abstract
+     * @param   Mage_Layout_Block_Abstract $block
+     * @return  Mage_Layout_Block_Abstract
      */
-    public function setParentBlock(Mage_Core_Block_Abstract $block)
+    public function setParentBlock(Mage_Layout_Block_Abstract $block)
     {
         $this->_parentBlock = $block;
         return $this;
@@ -230,10 +230,10 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
     /**
      * Set layout object
      *
-     * @param   Mage_Core_Model_Layout $layout
-     * @return  Mage_Core_Block_Abstract
+     * @param   Mage_Layout_Model_Layout $layout
+     * @return  Mage_Layout_Block_Abstract
      */
-    public function setLayout(Mage_Core_Model_Layout $layout)
+    public function setLayout(Mage_Layout_Model_Layout $layout)
     {
         $this->_layout = $layout;
         // Mage::dispatchEvent('core_block_abstract_prepare_layout_before', array('block' => $this));
@@ -247,7 +247,7 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
      *
      * You can redefine this method in child classes for changing layout
      *
-     * @return Mage_Core_Block_Abstract
+     * @return Mage_Layout_Block_Abstract
      */
     protected function _prepareLayout()
     {
@@ -257,7 +257,7 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
     /**
      * Retrieve layout object
      *
-     * @return Mage_Core_Model_Layout
+     * @return Mage_Layout_Model_Layout
      */
     public function getLayout()
     {
@@ -277,7 +277,7 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
      * Set the anonymous flag
      *
      * @param  bool $flag
-     * @return Mage_Core_Block_Abstract
+     * @return Mage_Layout_Block_Abstract
      */
     public function setIsAnonymous($flag)
     {
@@ -299,7 +299,7 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
      * Set anonymous suffix for current block
      *
      * @param string $suffix
-     * @return Mage_Core_Block_Abstract
+     * @return Mage_Layout_Block_Abstract
      */
     public function setAnonSuffix($suffix)
     {
@@ -321,7 +321,7 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
      * Set block alias
      *
      * @param string $alias
-     * @return Mage_Core_Block_Abstract
+     * @return Mage_Layout_Block_Abstract
      */
     public function setBlockAlias($alias)
     {
@@ -333,7 +333,7 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
      * Set block's name in layout and unsets previous link if such exists.
      *
      * @param string $name
-     * @return Mage_Core_Block_Abstract
+     * @return Mage_Layout_Block_Abstract
      */
     public function setNameInLayout($name)
     {
@@ -363,7 +363,7 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
      *
      * @param   string $name
      * @param   mixed $value
-     * @return  Mage_Core_Block_Abstract
+     * @return  Mage_Layout_Block_Abstract
      */
     public function setAttribute($name, $value = null)
     {
@@ -374,8 +374,8 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
      * Set child block
      *
      * @param   string $alias
-     * @param   Mage_Core_Block_Abstract $block
-     * @return  Mage_Core_Block_Abstract
+     * @param   Mage_Layout_Block_Abstract $block
+     * @return  Mage_Layout_Block_Abstract
      */
     public function setChild($alias, $block)
     {
@@ -416,12 +416,12 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
      * Unset child block
      *
      * @param  string $alias
-     * @return Mage_Core_Block_Abstract
+     * @return Mage_Layout_Block_Abstract
      */
     public function unsetChild($alias)
     {
         if (isset($this->_children[$alias])) {
-            /** @var Mage_Core_Block_Abstract $block */
+            /** @var Mage_Layout_Block_Abstract $block */
             $block = $this->_children[$alias];
             $name = $block->getNameInLayout();
             unset($this->_children[$alias]);
@@ -451,7 +451,7 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
      * @param string $callback
      * @param mixed $result
      * @param array $params
-     * @return Mage_Core_Block_Abstract
+     * @return Mage_Layout_Block_Abstract
      */
     public function unsetCallChild($alias, $callback, $result, $params)
     {
@@ -475,7 +475,7 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
     /**
      * Unset all children blocks
      *
-     * @return Mage_Core_Block_Abstract
+     * @return Mage_Layout_Block_Abstract
      */
     public function unsetChildren()
     {
@@ -592,7 +592,7 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
      * Prepare child block before generate html
      *
      * @param   string $name
-     * @param   Mage_Core_Block_Abstract $child
+     * @param   Mage_Layout_Block_Abstract $child
      */
     protected function _beforeChildToHtml($name, $child)
     {
@@ -618,7 +618,7 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
     /**
      * Insert child block
      *
-     * @param   Mage_Core_Block_Abstract|string $block
+     * @param   Mage_Layout_Block_Abstract|string $block
      * @param   string $siblingName
      * @param   boolean $after
      * @param   string $alias
@@ -679,7 +679,7 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
      * Sort block's children
      *
      * @param boolean $force force re-sort all children
-     * @return Mage_Core_Block_Abstract
+     * @return Mage_Layout_Block_Abstract
      */
     public function sortChildren($force = false)
     {
@@ -724,9 +724,9 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
     /**
      * Append child block
      *
-     * @param   Mage_Core_Block_Abstract|string $block
+     * @param   Mage_Layout_Block_Abstract|string $block
      * @param   string $alias
-     * @return  Mage_Core_Block_Abstract
+     * @return  Mage_Layout_Block_Abstract
      */
     public function append($block, $alias = '')
     {
@@ -738,9 +738,9 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
      * Make sure specified block will be registered in the specified child groups
      *
      * @param string $groupName
-     * @param Mage_Core_Block_Abstract $child
+     * @param Mage_Layout_Block_Abstract $child
      */
-    public function addToChildGroup($groupName, Mage_Core_Block_Abstract $child)
+    public function addToChildGroup($groupName, Mage_Layout_Block_Abstract $child)
     {
         if (!isset($this->_childGroups[$groupName])) {
             $this->_childGroups[$groupName] = array();
@@ -754,7 +754,7 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
      * Add self to the specified group of parent block
      *
      * @param string $groupName
-     * @return Mage_Core_Block_Abstract
+     * @return Mage_Layout_Block_Abstract
      */
     public function addToParentGroup($groupName)
     {
@@ -815,7 +815,7 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
     /**
      * Before rendering html, but after trying to load cache
      *
-     * @return Mage_Core_Block_Abstract
+     * @return Mage_Layout_Block_Abstract
      */
     protected function _beforeToHtml()
     {
@@ -827,7 +827,7 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
      *
      * @param $openTag
      * @param $closeTag
-     * @return Mage_Core_Block_Abstract
+     * @return Mage_Layout_Block_Abstract
      */
     public function setFrameTags($openTag, $closeTag = null)
     {
@@ -879,7 +879,7 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
          * Use single transport object instance for all blocks
          */
         if (self::$_transportObject === null) {
-            self::$_transportObject = new Varien_Object;
+            self::$_transportObject = new Mage_Layout_Varien_Object;
         }
         self::$_transportObject->setHtml($html);
 //        Mage::dispatchEvent('core_block_abstract_to_html_after',
@@ -978,13 +978,13 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
     public function getSkinUrl($file = null, array $params = array())
     {
         // return Mage::getDesign()->getSkinUrl($file, $params);
-		return Mage_Core_Model_Design_Package::getInstance()->getSkinUrl($file, $params);
+		return Mage_Layout_Model_Design_Package::getInstance()->getSkinUrl($file, $params);
     }
 
     /**
      * Retrieve messages block
      *
-     * @return Mage_Core_Block_Messages
+     * @return Mage_Layout_Block_Messages
      */
     public function getMessagesBlock()
     {
@@ -997,10 +997,10 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
     /**
      * Set messages block
      *
-     * @param   Mage_Core_Block_Messages $block
-     * @return  Mage_Core_Block_Abstract
+     * @param   Mage_Layout_Block_Messages $block
+     * @return  Mage_Layout_Block_Abstract
      */
-    public function setMessagesBlock(Mage_Core_Block_Messages $block)
+    public function setMessagesBlock(Mage_Layout_Block_Messages $block)
     {
         $this->_messagesBlock = $block;
         return $this;
@@ -1010,7 +1010,7 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
      * Return block helper
      *
      * @param string $type
-     * @return Mage_Core_Block_Abstract
+     * @return Mage_Layout_Block_Abstract
      */
     public function getHelper($type)
     {
@@ -1021,7 +1021,7 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
      * Returns helper object
      *
      * @param string $name
-     * @return Mage_Core_Block_Abstract
+     * @return Mage_Layout_Block_Abstract
      */
 //    public function helper($name)
 //    {
@@ -1194,7 +1194,7 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
 	 * @todo: implement block cache
      * Prepare url for save to cache
      *
-     * @return Mage_Core_Block_Abstract
+     * @return Mage_Layout_Block_Abstract
      */
     protected function _beforeCacheUrl()
     {
@@ -1311,7 +1311,7 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
      * Save block content to cache storage
      *
      * @param string $data
-     * @return Mage_Core_Block_Abstract
+     * @return Mage_Layout_Block_Abstract
      */
     protected function _saveCache($data)
     {

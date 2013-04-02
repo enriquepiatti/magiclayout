@@ -25,7 +25,7 @@
  */
 
 
-class Mage_Core_Model_Design_Package
+class Mage_Layout_Model_Design_Package
 {
     const DEFAULT_AREA    = 'frontend';
     const DEFAULT_PACKAGE = 'default';
@@ -94,12 +94,12 @@ class Mage_Core_Model_Design_Package
     protected $_shouldFallback = true;
 
 	/**
-	 * @return Mage_Core_Model_Design_Package
+	 * @return Mage_Layout_Model_Design_Package
 	 */
 	public static function getInstance()
 	{
 		if (!self::$_instance) {
-			self::$_instance = new Mage_Core_Model_Design_Package();
+			self::$_instance = new Mage_Layout_Model_Design_Package();
 		}
 		return self::$_instance;
 	}
@@ -108,7 +108,7 @@ class Mage_Core_Model_Design_Package
      * Set store
      *
      * @param  string|integer|Mage_Core_Model_Store $store
-     * @return Mage_Core_Model_Design_Package
+     * @return Mage_Layout_Model_Design_Package
      */
     public function setStore($store)
     {
@@ -133,7 +133,7 @@ class Mage_Core_Model_Design_Package
      * Set package area
      *
      * @param  string $area
-     * @return Mage_Core_Model_Design_Package
+     * @return Mage_Layout_Model_Design_Package
      */
     public function setArea($area)
     {
@@ -159,7 +159,7 @@ class Mage_Core_Model_Design_Package
      * In case of any problem, the default will be set.
      *
      * @param  string $name
-     * @return Mage_Core_Model_Design_Package
+     * @return Mage_Layout_Model_Design_Package
      */
     public function setPackageName($name = '')
     {
@@ -236,7 +236,7 @@ class Mage_Core_Model_Design_Package
 	 * 2) if 2 parameters, treats 1st as key and 2nd as value
 	 *
 	 * @throws Mage_Layout_Exception
-	 * @return Mage_Core_Model_Design_Package
+	 * @return Mage_Layout_Model_Design_Package
 	 */
     public function setTheme()
     {

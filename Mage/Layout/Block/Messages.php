@@ -31,7 +31,7 @@
  * @package    Mage_Core
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-class Mage_Core_Block_Messages extends Mage_Core_Block_Template
+class Mage_Layout_Block_Messages extends Mage_Layout_Block_Template
 {
     /**
      * Messages collection
@@ -84,7 +84,7 @@ class Mage_Core_Block_Messages extends Mage_Core_Block_Template
     /**
      * Set message escape flag
      * @param bool $flag
-     * @return Mage_Core_Block_Messages
+     * @return Mage_Layout_Block_Messages
      */
     public function setEscapeMessageFlag($flag)
     {
@@ -96,7 +96,7 @@ class Mage_Core_Block_Messages extends Mage_Core_Block_Template
      * Set messages collection
      *
      * @param   Mage_Core_Model_Message_Collection $messages
-     * @return  Mage_Core_Block_Messages
+     * @return  Mage_Layout_Block_Messages
      */
     public function setMessages(Mage_Core_Model_Message_Collection $messages)
     {
@@ -108,7 +108,7 @@ class Mage_Core_Block_Messages extends Mage_Core_Block_Template
      * Add messages to display
      *
      * @param Mage_Core_Model_Message_Collection $messages
-     * @return Mage_Core_Block_Messages
+     * @return Mage_Layout_Block_Messages
      */
     public function addMessages(Mage_Core_Model_Message_Collection $messages)
     {
@@ -135,7 +135,7 @@ class Mage_Core_Block_Messages extends Mage_Core_Block_Template
      * Adding new message to message collection
      *
      * @param   Mage_Core_Model_Message_Abstract $message
-     * @return  Mage_Core_Block_Messages
+     * @return  Mage_Layout_Block_Messages
      */
     public function addMessage(Mage_Core_Model_Message_Abstract $message)
     {
@@ -147,7 +147,7 @@ class Mage_Core_Block_Messages extends Mage_Core_Block_Template
      * Adding new error message
      *
      * @param   string $message
-     * @return  Mage_Core_Block_Messages
+     * @return  Mage_Layout_Block_Messages
      */
     public function addError($message)
     {
@@ -159,7 +159,7 @@ class Mage_Core_Block_Messages extends Mage_Core_Block_Template
      * Adding new warning message
      *
      * @param   string $message
-     * @return  Mage_Core_Block_Messages
+     * @return  Mage_Layout_Block_Messages
      */
     public function addWarning($message)
     {
@@ -171,7 +171,7 @@ class Mage_Core_Block_Messages extends Mage_Core_Block_Template
      * Adding new nitice message
      *
      * @param   string $message
-     * @return  Mage_Core_Block_Messages
+     * @return  Mage_Layout_Block_Messages
      */
     public function addNotice($message)
     {
@@ -183,7 +183,7 @@ class Mage_Core_Block_Messages extends Mage_Core_Block_Template
      * Adding new success message
      *
      * @param   string $message
-     * @return  Mage_Core_Block_Messages
+     * @return  Mage_Layout_Block_Messages
      */
     public function addSuccess($message)
     {

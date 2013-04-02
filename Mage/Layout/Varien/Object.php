@@ -19,7 +19,7 @@
  * needs please refer to http://www.magentocommerce.com for more information.
  *
  * @category    Varien
- * @package     Varien_Object
+ * @package     Mage_Layout_Varien_Object
  * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
  * @license     http://www.magentocommerce.com/license/enterprise-edition
  */
@@ -29,10 +29,10 @@
  * Varien Object
  *
  * @category   Varien
- * @package    Varien_Object
+ * @package    Mage_Layout_Varien_Object
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-class Varien_Object implements ArrayAccess
+class Mage_Layout_Varien_Object implements ArrayAccess
 {
 
     /**
@@ -127,7 +127,7 @@ class Varien_Object implements ArrayAccess
      * Inits mapping array of object's previously used fields to new fields.
      * Must be overloaded by descendants to set concrete fields map.
      *
-     * @return Varien_Object
+     * @return Mage_Layout_Varien_Object
      */
     protected function _initOldFieldsMap()
     {
@@ -138,7 +138,7 @@ class Varien_Object implements ArrayAccess
      * Called after old fields are inited. Forms synchronization map to sync old fields and new fields
      * between each other.
      *
-     * @return Varien_Object
+     * @return Mage_Layout_Varien_Object
      */
     protected function _prepareSyncFieldsMap()
     {
@@ -184,7 +184,7 @@ class Varien_Object implements ArrayAccess
      * set name of object id field
      *
      * @param   string $name
-     * @return  Varien_Object
+     * @return  Mage_Layout_Varien_Object
      */
     public function setIdFieldName($name)
     {
@@ -196,7 +196,7 @@ class Varien_Object implements ArrayAccess
      * Retrieve name of object id field
      *
      * @param   string $name
-     * @return  Varien_Object
+     * @return  Mage_Layout_Varien_Object
      */
     public function getIdFieldName()
     {
@@ -220,7 +220,7 @@ class Varien_Object implements ArrayAccess
      * Set object id field value
      *
      * @param   mixed $value
-     * @return  Varien_Object
+     * @return  Mage_Layout_Varien_Object
      */
     public function setId($value)
     {
@@ -238,7 +238,7 @@ class Varien_Object implements ArrayAccess
      * Retains previous data in the object.
      *
      * @param array $arr
-     * @return Varien_Object
+     * @return Mage_Layout_Varien_Object
      */
     public function addData(array $arr)
     {
@@ -258,7 +258,7 @@ class Varien_Object implements ArrayAccess
      *
      * @param string|array $key
      * @param mixed $value
-     * @return Varien_Object
+     * @return Mage_Layout_Varien_Object
      */
     public function setData($key, $value=null)
     {
@@ -282,7 +282,7 @@ class Varien_Object implements ArrayAccess
      * $key can be a string only. Array will be ignored.
      *
      * @param string $key
-     * @return Varien_Object
+     * @return Mage_Layout_Varien_Object
      */
     public function unsetData($key=null)
     {
@@ -305,7 +305,7 @@ class Varien_Object implements ArrayAccess
      * $key can be a string only. Array will be ignored.
      *
      * @param string $key
-     * @return Varien_Object
+     * @return Mage_Layout_Varien_Object
      */
     public function unsetOldData($key=null)
     {
@@ -353,7 +353,7 @@ class Varien_Object implements ArrayAccess
                         return $default;
                     }
                     $data = $data[$k];
-                } elseif ($data instanceof Varien_Object) {
+                } elseif ($data instanceof Mage_Layout_Varien_Object) {
                     $data = $data->getData($k);
                 } else {
                     return $default;
@@ -381,7 +381,7 @@ class Varien_Object implements ArrayAccess
             } elseif (is_string($value)) {
                 $arr = explode("\n", $value);
                 return (isset($arr[$index]) && (!empty($arr[$index]) || strlen($arr[$index]) > 0)) ? $arr[$index] : null;
-            } elseif ($value instanceof Varien_Object) {
+            } elseif ($value instanceof Mage_Layout_Varien_Object) {
                 return $value->getData($index);
             }
             return $default;
@@ -405,7 +405,7 @@ class Varien_Object implements ArrayAccess
      *
      * @param string $key
      * @param mixed $args
-     * @return Varien_Object
+     * @return Mage_Layout_Varien_Object
      */
     public function setDataUsingMethod($key, $args=array())
     {
@@ -525,7 +525,7 @@ class Varien_Object implements ArrayAccess
         if (!empty($rootName)) {
             $xml.= '<'.$rootName.'>'."\n";
         }
-        $xmlModel = new Varien_Simplexml_Element('<node></node>');
+        $xmlModel = new Mage_Layout_Varien_Simplexml_Element('<node></node>');
         $arrData = $this->toArray($arrAttributes);
         foreach ($arrData as $fieldName => $fieldValue) {
             if ($addCdata === true) {
@@ -752,7 +752,7 @@ class Varien_Object implements ArrayAccess
      *
      * @param string $key
      * @param mixed $data
-     * @return Varien_Object
+     * @return Mage_Layout_Varien_Object
      */
     public function setOrigData($key=null, $data=null)
     {
@@ -781,7 +781,7 @@ class Varien_Object implements ArrayAccess
      * Clears data changes status
      *
      * @param boolean $value
-     * @return Varien_Object
+     * @return Mage_Layout_Varien_Object
      */
     public function setDataChanges($value)
     {
@@ -812,7 +812,7 @@ class Varien_Object implements ArrayAccess
                 $debug[$key] = $value;
             } elseif (is_array($value)) {
                 $debug[$key] = $this->debug($value, $objects);
-            } elseif ($value instanceof Varien_Object) {
+            } elseif ($value instanceof Mage_Layout_Varien_Object) {
                 $debug[$key.' ('.get_class($value).')'] = $value->debug(null, $objects);
             }
         }
@@ -889,7 +889,7 @@ class Varien_Object implements ArrayAccess
      *
      * @param string $field
      * @param boolean $flag
-     * @return Varien_Object
+     * @return Mage_Layout_Varien_Object
      */
     public function flagDirty($field, $flag=true)
     {

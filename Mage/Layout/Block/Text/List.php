@@ -30,7 +30,7 @@
  * @author      Magento Core Team <core@magentocommerce.com>
  */
 
-class Mage_Core_Block_Text_List extends Mage_Core_Block_Text
+class Mage_Layout_Block_Text_List extends Mage_Layout_Block_Text
 {
     protected function _toHtml()
     {

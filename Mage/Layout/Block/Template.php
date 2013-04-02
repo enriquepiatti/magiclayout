@@ -32,7 +32,7 @@
  * @package    Mage_Core
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-class Mage_Core_Block_Template extends Mage_Core_Block_Abstract
+class Mage_Layout_Block_Template extends Mage_Layout_Block_Abstract
 {
     const XML_PATH_DEBUG_TEMPLATE_HINTS         = 'dev/debug/template_hints';
     const XML_PATH_DEBUG_TEMPLATE_HINTS_BLOCKS  = 'dev/debug/template_hints_blocks';
@@ -85,7 +85,7 @@ class Mage_Core_Block_Template extends Mage_Core_Block_Abstract
          * In case template was passed through constructor
          * we assign it to block's property _template
          * Mainly for those cases when block created
-         * not via Mage_Core_Model_Layout::addBlock()
+         * not via Mage_Layout_Model_Layout::addBlock()
          */
         if ($this->hasData('template')) {
             $this->setTemplate($this->getData('template'));
@@ -106,7 +106,7 @@ class Mage_Core_Block_Template extends Mage_Core_Block_Abstract
      * Set path to template used for generating block's output.
      *
      * @param string $template
-     * @return Mage_Core_Block_Template
+     * @return Mage_Layout_Block_Template
      */
     public function setTemplate($template)
     {
@@ -144,7 +144,7 @@ class Mage_Core_Block_Template extends Mage_Core_Block_Abstract
      *
      * @param   string|array $key
      * @param   mixed $value
-     * @return  Mage_Core_Block_Template
+     * @return  Mage_Layout_Block_Template
      */
     public function assign($key, $value=null)
     {
@@ -163,7 +163,7 @@ class Mage_Core_Block_Template extends Mage_Core_Block_Abstract
      * Set template location directory
      *
      * @param string $dir
-     * @return Mage_Core_Block_Template
+     * @return Mage_Layout_Block_Template
      */
     public function setScriptPath($dir)
     {
@@ -317,11 +317,11 @@ HTML;
     /**
      * Get data from specified object
      *
-     * @param Varien_Object $object
+     * @param Mage_Layout_Varien_Object $object
      * @param string $key
      * @return mixed
      */
-    public function getObjectData(Varien_Object $object, $key)
+    public function getObjectData(Mage_Layout_Varien_Object $object, $key)
     {
         return $object->getDataUsingMethod((string)$key);
     }

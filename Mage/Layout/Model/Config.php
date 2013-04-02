@@ -3,7 +3,7 @@
  *
  * @author Enrique Piatti (contacto@enriquepiatti.com)
  */
-class Mage_Layout_Model_Config extends Varien_Object
+class Mage_Layout_Model_Config extends Mage_Layout_Varien_Object
 {
 	static protected $_instance;
 

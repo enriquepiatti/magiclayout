@@ -31,15 +31,15 @@
  * @category   Mage
  * @package    Mage_Core
  */
-class Mage_Core_Model_Layout extends Varien_Simplexml_Config
+class Mage_Layout_Model_Layout extends Mage_Layout_Varien_Simplexml_Config
 {
 
-	const ELEMENT_CLASS_NAME = 'Mage_Core_Model_Layout_Element';
+	const ELEMENT_CLASS_NAME = 'Mage_Layout_Model_Layout_Element';
 
 	/**
 	 * Layout Update module
 	 *
-	 * @var Mage_Core_Model_Layout_Update
+	 * @var Mage_Layout_Model_Layout_Update
 	 */
 	protected $_update;
 
@@ -87,14 +87,14 @@ class Mage_Core_Model_Layout extends Varien_Simplexml_Config
 	{
 		$this->_elementClass = self::ELEMENT_CLASS_NAME; // Mage::getConfig()->getModelClassName('core/layout_element');
 		$this->setXml(simplexml_load_string('<layout/>', $this->_elementClass));
-		$this->_update = new Mage_Core_Model_Layout_Update(); // Mage::getModel('core/layout_update');
+		$this->_update = new Mage_Layout_Model_Layout_Update(); // Mage::getModel('core/layout_update');
 		parent::__construct($data);
 	}
 
 	/**
 	 * Layout update instance
 	 *
-	 * @return Mage_Core_Model_Layout_Update
+	 * @return Mage_Layout_Model_Layout_Update
 	 */
 	public function getUpdate()
 	{
@@ -105,7 +105,7 @@ class Mage_Core_Model_Layout extends Varien_Simplexml_Config
 	 * Set layout area
 	 *
 	 * @param   string $area
-	 * @return  Mage_Core_Model_Layout
+	 * @return  Mage_Layout_Model_Layout
 	 */
 	public function setArea($area)
 	{
@@ -127,7 +127,7 @@ class Mage_Core_Model_Layout extends Varien_Simplexml_Config
 	 * Declaring layout direct output flag
 	 *
 	 * @param   bool $flag
-	 * @return  Mage_Core_Model_Layout
+	 * @return  Mage_Layout_Model_Layout
 	 */
 	public function setDirectOutput($flag)
 	{
@@ -148,7 +148,7 @@ class Mage_Core_Model_Layout extends Varien_Simplexml_Config
 	/**
 	 * Loyout xml generation
 	 *
-	 * @return Mage_Core_Model_Layout
+	 * @return Mage_Layout_Model_Layout
 	 */
 	public function generateXml()
 	{
@@ -222,9 +222,9 @@ class Mage_Core_Model_Layout extends Varien_Simplexml_Config
 	/**
 	 * Add block object to layout based on xml node data
 	 *
-	 * @param Varien_Simplexml_Element $node
-	 * @param Varien_Simplexml_Element $parent
-	 * @return Mage_Core_Model_Layout
+	 * @param Mage_Layout_Varien_Simplexml_Element $node
+	 * @param Mage_Layout_Varien_Simplexml_Element $parent
+	 * @return Mage_Layout_Model_Layout
 	 */
 	protected function _generateBlock($node, $parent)
 	{
@@ -282,9 +282,9 @@ class Mage_Core_Model_Layout extends Varien_Simplexml_Config
 	/**
 	 * Enter description here...
 	 *
-	 * @param Varien_Simplexml_Element $node
-	 * @param Varien_Simplexml_Element $parent
-	 * @return Mage_Core_Model_Layout
+	 * @param Mage_Layout_Varien_Simplexml_Element $node
+	 * @param Mage_Layout_Varien_Simplexml_Element $parent
+	 * @return Mage_Layout_Model_Layout
 	 */
 	protected function _generateAction($node, $parent)
 	{
@@ -311,7 +311,7 @@ class Mage_Core_Model_Layout extends Varien_Simplexml_Config
 			unset($args['@attributes']);
 
 			foreach ($args as $key => $arg) {
-				if (($arg instanceof Mage_Core_Model_Layout_Element)) {
+				if (($arg instanceof Mage_Layout_Model_Layout_Element)) {
 					if (isset($arg['helper'])) {
 						$helperName = explode('/', (string)$arg['helper']);
 						$helperMethod = array_pop($helperName);
@@ -352,7 +352,7 @@ class Mage_Core_Model_Layout extends Varien_Simplexml_Config
 	/**
 	 * Translate layout node
 	 *
-	 * @param Varien_Simplexml_Element $node
+	 * @param Mage_Layout_Varien_Simplexml_Element $node
 	 * @param array $args
 	 **/
 	protected function _translateLayoutNode($node, &$args)
@@ -399,7 +399,7 @@ class Mage_Core_Model_Layout extends Varien_Simplexml_Config
 	 * Save block in blocks registry
 	 *
 	 * @param string $name
-	 * @param Mage_Core_Model_Layout $block
+	 * @param Mage_Layout_Model_Layout $block
 	 */
 	public function setBlock($name, $block)
 	{
@@ -425,7 +425,7 @@ class Mage_Core_Model_Layout extends Varien_Simplexml_Config
 	 * @param     string $type
 	 * @param     string $name
 	 * @param     array $attributes
-	 * @return    Mage_Core_Block_Abstract
+	 * @return    Mage_Layout_Block_Abstract
 	 */
 	public function createBlock($type, $name='', array $attributes = array())
 	{
@@ -460,9 +460,9 @@ class Mage_Core_Model_Layout extends Varien_Simplexml_Config
 	/**
 	 * Add a block to registry, create new object if needed
 	 *
-	 * @param string|Mage_Core_Block_Abstract $blockClass
+	 * @param string|Mage_Layout_Block_Abstract $blockClass
 	 * @param string $blockName
-	 * @return Mage_Core_Block_Abstract
+	 * @return Mage_Layout_Block_Abstract
 	 */
 	public function addBlock($block, $blockName)
 	{
@@ -476,7 +476,7 @@ class Mage_Core_Model_Layout extends Varien_Simplexml_Config
 	 * @param string $block
 	 * @param array $attributes
 	 * @throws Mage_Layout_Exception
-	 * @return Mage_Core_Block_Abstract
+	 * @return Mage_Layout_Block_Abstract
 	 */
 	protected function _getBlockInstance($block, array $attributes=array())
 	{
@@ -505,7 +505,7 @@ class Mage_Core_Model_Layout extends Varien_Simplexml_Config
 			}
 		}
 
-		if (!$block instanceof Mage_Core_Block_Abstract) {
+		if (!$block instanceof Mage_Layout_Block_Abstract) {
 			// Mage::throwException(Mage::helper('core')->__('Invalid block type: %s', $block));
 			throw new Mage_Layout_Exception('Invalid block type: '.$block);
 		}
@@ -527,7 +527,7 @@ class Mage_Core_Model_Layout extends Varien_Simplexml_Config
 	 * Get block object by name
 	 *
 	 * @param string $name
-	 * @return Mage_Core_Block_Abstract
+	 * @return Mage_Layout_Block_Abstract
 	 */
 	public function getBlock($name)
 	{
@@ -577,7 +577,7 @@ class Mage_Core_Model_Layout extends Varien_Simplexml_Config
 	/**
 	 * Retrieve messages block
 	 *
-	 * @return Mage_Core_Block_Messages
+	 * @return Mage_Layout_Block_Messages
 	 */
 	public function getMessagesBlock()
 	{
@@ -606,7 +606,7 @@ class Mage_Core_Model_Layout extends Varien_Simplexml_Config
 
 			$helper = new $className();
 			if ($helper) {
-				if ($helper instanceof Mage_Core_Block_Abstract) {
+				if ($helper instanceof Mage_Layout_Block_Abstract) {
 					$helper->setLayout($this);
 				}
 				$this->_helpers[$type] = $helper;
@@ -638,10 +638,10 @@ class Mage_Core_Model_Layout extends Varien_Simplexml_Config
 	 * 2) "module" attribute in any ancestor element
 	 * 3) layout handle name - first 1 or 2 parts (namespace is determined automatically)
 	 *
-	 * @param Varien_Simplexml_Element $node
+	 * @param Mage_Layout_Varien_Simplexml_Element $node
 	 * @return string
 	 */
-	public static function findTranslationModuleName(Varien_Simplexml_Element $node)
+	public static function findTranslationModuleName(Mage_Layout_Varien_Simplexml_Element $node)
 	{
 		$result = $node->getAttribute('module');
 		if ($result) {

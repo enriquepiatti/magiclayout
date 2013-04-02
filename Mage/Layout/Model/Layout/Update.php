@@ -25,7 +25,7 @@
  */
 
 
-class Mage_Core_Model_Layout_Update
+class Mage_Layout_Model_Layout_Update
 {
     /**
      * Additional tag for cleaning layout cache convenience
@@ -40,7 +40,7 @@ class Mage_Core_Model_Layout_Update
     protected $_elementClass;
 
     /**
-     * @var Simplexml_Element
+     * @var Mage_Layout_Varien_Simplexml_Element
      */
     protected $_packageLayout;
 
@@ -91,7 +91,7 @@ class Mage_Core_Model_Layout_Update
     public function getElementClass()
     {
         if (!$this->_elementClass) {
-            $this->_elementClass = Mage_Core_Model_Layout::ELEMENT_CLASS_NAME; // Mage::getConfig()->getModelClassName('core/layout_element');
+            $this->_elementClass = Mage_Layout_Model_Layout::ELEMENT_CLASS_NAME; // Mage::getConfig()->getModelClassName('core/layout_element');
         }
         return $this->_elementClass;
     }
@@ -164,7 +164,7 @@ class Mage_Core_Model_Layout_Update
      * Set cache id
      *
      * @param string $cacheId
-     * @return Mage_Core_Model_Layout_Update
+     * @return Mage_Layout_Model_Layout_Update
      */
     public function setCacheId($cacheId)
     {
@@ -212,7 +212,7 @@ class Mage_Core_Model_Layout_Update
      * Load layout updates by handles
      *
      * @param array|string $handles
-     * @return Mage_Core_Model_Layout_Update
+     * @return Mage_Layout_Model_Layout_Update
      */
     public function load($handles=array())
     {
@@ -250,7 +250,7 @@ class Mage_Core_Model_Layout_Update
      * Merge layout update by handle
      *
      * @param string $handle
-     * @return Mage_Core_Model_Layout_Update
+     * @return Mage_Layout_Model_Layout_Update
      */
     public function merge($handle)
     {
@@ -266,7 +266,7 @@ class Mage_Core_Model_Layout_Update
     {
         $storeId = $this->getStoreId(); // Mage::app()->getStore()->getId();
         $elementClass = $this->getElementClass();
-        $design = Mage_Core_Model_Design_Package::getInstance(); // Mage::getSingleton('core/design_package');
+        $design = Mage_Layout_Model_Design_Package::getInstance(); // Mage::getSingleton('core/design_package');
         $cacheKey = 'LAYOUT_' . $design->getArea() . '_STORE' . $storeId . '_' . $design->getPackageName() . '_'
             . $design->getTheme('layout');
 
@@ -349,15 +349,15 @@ class Mage_Core_Model_Layout_Update
      * @param string $package
      * @param string $theme
      * @param integer|null $storeId
-     * @return Mage_Core_Model_Layout_Element
+     * @return Mage_Layout_Model_Layout_Element
      */
     public function getFileLayoutUpdatesXml($area, $package, $theme, $storeId = null)
     {
         if (null === $storeId) {
             $storeId = $this->getStoreId();
         }
-        /* @var $design Mage_Core_Model_Design_Package */
-        $design = Mage_Core_Model_Design_Package::getInstance(); // Mage::getSingleton('core/design_package');
+        /* @var $design Mage_Layout_Model_Design_Package */
+        $design = Mage_Layout_Model_Design_Package::getInstance(); // Mage::getSingleton('core/design_package');
         $layoutXml = null;
         $elementClass = $this->getElementClass();
 		$updateFiles = $this->getConfig('files/'.$area);

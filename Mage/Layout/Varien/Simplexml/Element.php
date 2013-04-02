@@ -32,7 +32,7 @@
  * @package    Varien_Simplexml
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-class Varien_Simplexml_Element extends SimpleXMLElement
+class Mage_Layout_Varien_Simplexml_Element extends SimpleXMLElement
 {
 
     /**
@@ -42,14 +42,14 @@ class Varien_Simplexml_Element extends SimpleXMLElement
      *
      * @todo make use of spl_object_hash to keep global array of simplexml elements
      *       to emulate complicated attributes
-     * @var Varien_Simplexml_Element
+     * @var Mage_Layout_Varien_Simplexml_Element
      */
     protected $_parent = null;
 
     /**
      * For future use
      *
-     * @param Varien_Simplexml_Element $element
+     * @param Mage_Layout_Varien_Simplexml_Element $element
      */
     public function setParent($element)
     {
@@ -61,7 +61,7 @@ class Varien_Simplexml_Element extends SimpleXMLElement
      *
      * Currently using xpath
      *
-     * @return Varien_Simplexml_Element
+     * @return Mage_Layout_Varien_Simplexml_Element
      */
     public function getParent()
     {
@@ -143,7 +143,7 @@ class Varien_Simplexml_Element extends SimpleXMLElement
      * @todo    Check if we still need all this and revert to plain XPath if this makes any sense
      * @todo    param string $path Subset of xpath. Example: "child/grand[@attrName='attrValue']/subGrand"
      * @param   string $path Example: "child/grand@attrName=attrValue/subGrand" (to make it faster without regex)
-     * @return  Varien_Simplexml_Element
+     * @return  Mage_Layout_Varien_Simplexml_Element
      */
     public function descend($path)
     {
@@ -335,8 +335,8 @@ class Varien_Simplexml_Element extends SimpleXMLElement
     /**
      * Appends $source to current node
      *
-     * @param Varien_Simplexml_Element $source
-     * @return Varien_Simplexml_Element
+     * @param Mage_Layout_Varien_Simplexml_Element $source
+     * @return Mage_Layout_Varien_Simplexml_Element
      */
     public function appendChild($source)
     {
@@ -373,13 +373,13 @@ class Varien_Simplexml_Element extends SimpleXMLElement
      * If $overwrite is false will merge only missing nodes
      * Otherwise will overwrite existing nodes
      *
-     * @param Varien_Simplexml_Element $source
+     * @param Mage_Layout_Varien_Simplexml_Element $source
      * @param boolean $overwrite
-     * @return Varien_Simplexml_Element
+     * @return Mage_Layout_Varien_Simplexml_Element
      */
     public function extend($source, $overwrite=false)
     {
-        if (!$source instanceof Varien_Simplexml_Element) {
+        if (!$source instanceof Mage_Layout_Varien_Simplexml_Element) {
             return $this;
         }
 
@@ -393,9 +393,9 @@ class Varien_Simplexml_Element extends SimpleXMLElement
     /**
      * Extends one node
      *
-     * @param Varien_Simplexml_Element $source
+     * @param Mage_Layout_Varien_Simplexml_Element $source
      * @param boolean $overwrite
-     * @return Varien_Simplexml_Element
+     * @return Mage_Layout_Varien_Simplexml_Element
      */
     public function extendChild($source, $overwrite=false)
     {
