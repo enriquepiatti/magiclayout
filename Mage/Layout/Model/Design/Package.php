@@ -170,7 +170,7 @@ class Mage_Layout_Model_Design_Package
                 $this->_name = $customPackage;
             }
             else {
-                $this->_name = $this->getConfig('package'); // Mage::getStoreConfig('design/package/name', $this->getStore());
+                $this->_name = Mage_Layout_Model_Config::getInstance()->getPackageName(); // Mage::getStoreConfig('design/package/name', $this->getStore());
             }
         }
         else {
@@ -343,7 +343,7 @@ class Mage_Layout_Model_Design_Package
     {
         $params['_type'] = 'skin';
         $this->updateParamDefaults($params);
-        $baseUrl = $this->getConfig('base_url').'/'.$this->getConfig('skin')
+        $baseUrl = Mage_Layout_Model_Config::getInstance()->getSkinUrl()
             .$params['_area'].'/'.$params['_package'].'/'.$params['_theme'].'/';
         return $baseUrl;
     }
@@ -451,7 +451,7 @@ class Mage_Layout_Model_Design_Package
      */
     public function getFallbackTheme()
     {
-        return $this->getConfig('theme/default'); // Mage::getStoreConfig('design/theme/default', $this->getStore());
+        return Mage_Layout_Model_Config::getInstance()->getDefaultTheme(); // Mage::getStoreConfig('design/theme/default', $this->getStore());
     }
 
     public function getLayoutFilename($file, array $params=array())
@@ -890,14 +890,12 @@ class Mage_Layout_Model_Design_Package
 
 	public function getDesignDir()
 	{
-		$config = Mage_Layout_Model_Config::getInstance();
-		return $config->getRootDir().'/'.$this->getConfig('base_path');
+		return Mage_Layout_Model_Config::getInstance()->getDesignPath(false);
 	}
 
 	public function getSkinDir()
 	{
-		$config = Mage_Layout_Model_Config::getInstance();
-		return $config->getRootDir().'/'.$this->getConfig('skin_path');
+		return Mage_Layout_Model_Config::getInstance()->getSkinPath(false);
 	}
 
 }

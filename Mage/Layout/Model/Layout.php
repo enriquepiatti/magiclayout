@@ -483,7 +483,7 @@ class Mage_Layout_Model_Layout extends Mage_Layout_Varien_Simplexml_Config
 		static $blockFactoryInstance = null;
 		if (is_string($block)) {
 			if($blockFactoryInstance === null){
-				$blockFactory = $this->getConfig('block_factory');
+				$blockFactory = Mage_Layout_Model_Config::getInstance()->getBlockFactoryClassName();
 				if($blockFactory)
 				{
 					$interface = 'Mage_Layout_Helper_Block_Factory_Interface';

@@ -360,7 +360,7 @@ class Mage_Layout_Model_Layout_Update
         $design = Mage_Layout_Model_Design_Package::getInstance(); // Mage::getSingleton('core/design_package');
         $layoutXml = null;
         $elementClass = $this->getElementClass();
-		$updateFiles = $this->getConfig('files/'.$area);
+		$updateFiles = Mage_Layout_Model_Config::getInstance()->getLayoutFiles($area);
         // custom local layout updates file - load always last
         $updateFiles[] = 'local.xml';
         $layoutStr = '';
